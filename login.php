@@ -42,7 +42,8 @@ if (isset($_SESSION["correo_temp"])) {
     </style>
 </head>
 
-<body class="bg-white flex items-center justify-center min-h-screen p-4">
+<body class="bg-cover bg-center bg-no-repeat flex items-center justify-center min-h-screen p-4" style="background-image: url('https://www.lampadia.com/assets/uploads_images/images/a1%2898%29.jpg');">
+
 
     <div class="bg-gray-100 rounded-2xl shadow-2xl overflow-hidden flex max-w-3xl w-full h-[480px]">
        
