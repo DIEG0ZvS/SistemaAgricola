@@ -1,29 +1,30 @@
 <?php
-    require_once "controladores/PedidoController.php";
-    require_once "layouts/header.php";
+require_once "controladores/InventarioController.php";
+require_once "layouts/header.php";
 
-    $pc = new PedidoController();
-    $pedidos = $pc->mostrar();
+$ic = new InventarioController();
+$inventario = $ic->mostrar();
 ?>
-<a class="btn btn-danger" href="logout.php">Salir</a>
-<h1 class="mt-4">Pedidos del Sistema</h1>
-<table class="table">
-    <thead>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Pedidos del Sistema</h2>
+        <a class="btn btn-danger" href="logout.php">Cerrar Sesión</a>
+    </div>
+
+    <table class="table table-hover table-bordered align-middle">
+        <thead class="table-dark text-center">
     <tr>
-        <th>ID Producto</th>
-        <th>Stock</th>
-    </tr>
+            <th>ID Producto</th>
+            <th>Stock</th>
+        </tr>
     </thead>
     <tbody>
-<?php
-    foreach($pedidos as $pedido){
-        echo "<tr>
-                <td>" . $pedido["productoId"] . "</td>
-                <td>" . $pedido["stock"] . "</td>
-            </tr>";
-    }
-?>
+        <?php foreach($inventario as $item): ?>
+            <tr>
+                <td><?= htmlspecialchars($item["productoId"]) ?></td>
+                <td><?= htmlspecialchars($item["stock"]) ?></td>
+            </tr>
+        <?php endforeach; ?>
     </tbody>
 </table>
-<?php
-require_once "layouts/footer.php";
+<?php require_once "layouts/footer.php"; ?>

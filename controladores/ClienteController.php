@@ -31,7 +31,7 @@ class ClienteController{
         $cliente = new Cliente();
         $resultado = $cliente->eliminar($id);
         if($resultado!=0){
-            return "location: verCliente.php";
+            return "location: verUsuarios.php";
         }else{
             return "Error: no se eliminó el cliente";
         }
@@ -40,13 +40,13 @@ class ClienteController{
     public function actualizar(array $datos){
         $cliente = new Cliente();
         $resultado = $cliente->actualizar(
+            $datos["id"],
             $datos["nombre"],
             $datos["direccion"],
-            $datos["telefono"],
-            $datos["id"]
+            $datos["telefono"]
         );
         if($resultado!= 0){
-            header("location: verCliente.php");
+            header("location: verUsuarios.php");
         }else{
             return "Error al actualizar el cliente";
         }

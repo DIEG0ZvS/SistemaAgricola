@@ -16,10 +16,18 @@
 ?>
 <h1 class="mt-4">Actualizar Pedido</h1>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input class="form-control" type="text" name="clienteid" placeholder="Cliente" value="<?=$cliente; ?>"><br>
-    <input class="form-control" type="text" name="fecha" placeholder="Fecha" value="<?=$fecha; ?>"><br>
-    <input class="form-control" type="number" name="estado" placeholder="Estado" value="<?=$estado; ?>"><br>
-    <input type="hidden" name="id" value="<?=$id?>">
+    <input class="form-control" type="text" name="clienteId" placeholder="Cliente" value="<?=$cliente; ?>"><br>
+    <label>Fecha:</label>
+    <input class="form-control" type="date" name="fecha" value="<?= $fecha; ?>" required><br>
+
+    <label>Estado:</label>
+    <select class="form-control" name="estado" required>
+        <option value="Pendiente" <?= $estado == "Pendiente" ? "selected" : "" ?>>Pendiente</option>
+        <option value="En camino" <?= $estado == "En camino" ? "selected" : "" ?>>En camino</option>
+        <option value="Entregado" <?= $estado == "Entregado" ? "selected" : "" ?>>Entregado</option>
+    </select><br>
+
+    <input type="hidden" name="id" value="<?= $id ?>">
     <input type="submit" value="Actualizar" class="btn btn-primary"><br>
 </form>
 <?php

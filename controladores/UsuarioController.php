@@ -46,11 +46,11 @@ class UsuarioController {
             $datos["id"]
         );
         if ($resultado != 0) {
-            header("Location: verClientes.php");
+            header("Location: verUsuarios.php");
             exit();
         } else {
             $_SESSION['login_error'] = "Error al actualizar el usuario.";
-            header("Location: verClientes.php");
+            header("Location: verUsuarios.php");
             exit();
         }
     }

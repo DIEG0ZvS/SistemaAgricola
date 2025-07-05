@@ -37,15 +37,16 @@ class DistribucionController{
     }
 
     public function actualizar(array $datos){
-        $distribucion = new Distribucion();
-        $resultado = $distribucion->actualizar(
-            $datos["pedidoId"],
-            $datos["nomMerc"],
-        );
-        if($resultado!=0){
-            header("location: verDistribucion.php");
-        }else{
-            return "Error al actualizar la distribución";
-        }
+    $distribucion = new Distribucion();
+    $resultado = $distribucion->actualizar(
+        $datos["pedidoId"],
+        $datos["nomMerc"],
+        $datos["id"]
+    );
+    if($resultado != 0){
+        header("location: verDistribucion.php");
+    } else {
+        return "Error al actualizar la distribución";
     }
+}
 }

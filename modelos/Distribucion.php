@@ -3,20 +3,19 @@
 require_once "Conn.php";
 
 class Distribucion {
-    public $id;
     public $pedidoId;
     public $nomMerc;
 
     public function __construct() {}
 
     public function buscar($id) {
-        $conn = new Conn();
-        $conexion = $conn->conectar();
-        $sql = "SELECT * FROM distribucion WHERE id = $id";
-        $resultado = $conexion->query($sql);
-        $conn->cerrar();
-        return $resultado;
-    }
+    $conn = new Conn();
+    $conexion = $conn->conectar();
+    $sql = "SELECT * FROM distribucion WHERE id = $id";
+    $resultado = $conexion->query($sql)->fetch(PDO::FETCH_ASSOC);
+    $conn->cerrar();
+    return $resultado;
+}
 
     public function actualizar($pedidoId, $nomMerc, $id) {
         $conn = new Conn();

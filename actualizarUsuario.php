@@ -26,5 +26,5 @@
     require_once "layouts/footer.php";
     if(!empty($_POST)){
         $cc->actualizar($_POST);
-        header("Location: verCliente.php");
+        header("Location: verUsuarios.php");
     }
