@@ -1,41 +1,23 @@
 <?php
-<<<<<<< HEAD
 require_once "Conn.php";
 
 class Distribucion {
-    public function registrar($pedidoId, $nomMerc) {
+    public function guardar($pedidoid, $nommerc) {
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sql = "INSERT INTO distribucion (pedidoId, nomMerc) VALUES ($pedidoId, '$nomMerc')";
+        $sql = "insert into distribucion(pedidoid, nommerc) values ($pedidoid, '$nommerc')";
         $resultado = $conexion->exec($sql);
         $conn->cerrar();
         return $resultado;
     }
 
-    public function obtenerTodos() {
+    public function mostrar() {
         $conn = new Conn();
         $conexion = $conn->conectar();
-        $sql = "SELECT * FROM distribucion";
+        $sql = "select * from distribucion";
         $resultado = $conexion->query($sql);
         $conn->cerrar();
         return $resultado;
     }
 }
-=======
-class Distribucion {
-    public static function registrar($pedidoId, $nomMerc) {
-        global $pdo;
-        $stmt = $pdo->prepare("INSERT INTO distribucion (pedidoId, nomMerc) VALUES (?, ?)");
-        $stmt->execute([$pedidoId, $nomMerc]);
-    }
-
-    public static function obtenerPorPedido($pedidoId) {
-        global $pdo;
-        $stmt = $pdo->prepare("SELECT * FROM distribucion WHERE pedidoId = ?");
-        $stmt->execute([$pedidoId]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-}
 ?>
-+
->>>>>>> 69d373e42b3a1fb8bb4c8b2d38f0382447560222
