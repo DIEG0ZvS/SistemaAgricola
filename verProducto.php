@@ -11,7 +11,7 @@
     <thead>
     <tr>
         <th>Nombre</th>
-        <th>Descripción</th>
+        <th>categoria</th>
         <th>Precio</th>
         <th>&nbsp</th>
         <th>&nbsp</th>
@@ -22,7 +22,7 @@
     foreach($productos as $producto){
     echo "<tr>
             <td>" .$producto["nombre"]. "</td>
-            <td>" .$producto["descripcion"]. "</td>
+            <td>" .$producto["categoria"]. "</td>
             <td>" .$producto["precio"]. "</td>
             <td><a href='eliminarProducto.php?id=".$producto["id"]."' class='btn btn-sm btn-outline-danger'>Eliminar</a></td>
             <td><a href='actualizarProducto.php?id=".$producto["id"]."' class='btn btn-sm btn-outline-warning'>Actualizar</a></td>

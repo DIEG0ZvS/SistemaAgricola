@@ -24,8 +24,8 @@
                 <td>" .$cliente["nombre"]. "</td>
                 <td>" .$cliente["direccion"]. "</td>
                 <td>" .$cliente["telefono"]. "</td>
-                <td><a href='eliminarCliente.php?id=".$cliente["id"]."' class='btn btn-sm btn-outline-danger'>Eliminar</a></td>
-                <td><a href='actualizarCliente.php?id=".$cliente["id"]."' class='btn btn-sm btn-outline-warning'>Actualizar</a></td>
+                <td><a href='eliminarUsuario.php?id=".$cliente["id"]."' class='btn btn-sm btn-outline-danger'>Eliminar</a></td>
+                <td><a href='actualizarUsuario.php?id=".$cliente["id"]."' class='btn btn-sm btn-outline-warning'>Actualizar</a></td>
             </tr>";
     }
 ?>

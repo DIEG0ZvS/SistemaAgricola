@@ -10,14 +10,14 @@
     $productos = $pc->buscar($id);
     foreach ($productos as $producto){
         $nombre = $producto["nombre"];
-        $descripcion = $producto["descripcion"];
+        $categoria = $producto["categoria"];
         $precio = $producto["precio"];
     }
 ?>
 <h1 class="mt-4">Actualizar Producto</h1>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
     <input class="form-control" type="text" name="nombre" placeholder="Nombre" value="<?=$nombre; ?>"><br>
-    <input class="form-control" type="text" name="descripcion" placeholder="Descripción" value="<?=$descripcion; ?>"><br>
+    <input class="form-control" type="text" name="categoria" placeholder="Categoría" value="<?=$categoria; ?>"><br>
     <input class="form-control" type="number" step="0.01" name="precio" placeholder="Precio" value="<?=$precio; ?>"><br>
     <input type="hidden" name="id" value="<?=$id?>">
     <input type="submit" value="Actualizar" class="btn btn-primary"><br>

@@ -45,7 +45,7 @@ class UsuarioController{
             $datos["id"]
         );
         if($resultado!= 0){
-            header("location: verUsuarios.php");
+            header("location: verClientes.php");
         }else{
             return "Error al actualizar el usuario";
         }

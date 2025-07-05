@@ -9,16 +9,16 @@
     $pc = new PedidoController();
     $pedidos = $pc->buscar($id);
     foreach ($pedidos as $pedido){
-        $cliente = $pedido["cliente"];
-        $producto = $pedido["producto"];
-        $cantidad = $pedido["cantidad"];
+        $cliente = $pedido["clienteId"];
+        $fecha = $pedido["fecha"];
+        $estado = $pedido["estado"];
     }
 ?>
 <h1 class="mt-4">Actualizar Pedido</h1>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input class="form-control" type="text" name="cliente" placeholder="Cliente" value="<?=$cliente; ?>"><br>
-    <input class="form-control" type="text" name="producto" placeholder="Producto" value="<?=$producto; ?>"><br>
-    <input class="form-control" type="number" name="cantidad" placeholder="Cantidad" value="<?=$cantidad; ?>"><br>
+    <input class="form-control" type="text" name="clienteid" placeholder="Cliente" value="<?=$cliente; ?>"><br>
+    <input class="form-control" type="text" name="fecha" placeholder="Fecha" value="<?=$fecha; ?>"><br>
+    <input class="form-control" type="number" name="estado" placeholder="Estado" value="<?=$estado; ?>"><br>
     <input type="hidden" name="id" value="<?=$id?>">
     <input type="submit" value="Actualizar" class="btn btn-primary"><br>
 </form>
