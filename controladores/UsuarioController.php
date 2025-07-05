@@ -4,10 +4,9 @@ require_once "modelos/Usuario.php";
 
 class UsuarioController {
 
-
-    public function guardar(String $nombre, String $correo, String $clave, String $rol = 'empleado') {
+    public function guardar(String $nombre, String $correo, String $clave) {
         $usuario = new Usuario();
-        return $usuario->guardar($nombre, $correo, $clave, $rol);
+        return $usuario->guardar($nombre, $correo, $clave);
     }
 
     public function login(String $correo, String $clave) {
@@ -21,7 +20,6 @@ class UsuarioController {
             $claveBd = $fila["clave"];
             $id = $fila["id"];
             $nombre = $fila["nombre"];
-            $rol = $fila["rol"];
             $contador++;
         }
 
@@ -30,7 +28,6 @@ class UsuarioController {
                 session_start();
                 $_SESSION["id"] = $id;
                 $_SESSION["nombre"] = $nombre;
-                $_SESSION["rol"] = $rol;
                 header("Location: home.php");
                 exit();
             } else {
