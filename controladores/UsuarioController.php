@@ -61,8 +61,7 @@ class UsuarioController {
 
         if (!empty($resultado)) {
             foreach ($resultado as $userLogin) {
-                // Comparación directa para contraseñas en texto plano
-                if ($clave === $userLogin["clave"]) {
+                if (password_verify($clave, $userLogin["clave"])) {
                     session_start();
                     $_SESSION["nombre"] = $userLogin["nombre"];
                     $_SESSION["id"] = $userLogin["id"];

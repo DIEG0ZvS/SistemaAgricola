@@ -62,5 +62,5 @@ class Usuario {
         $resultado = $conexion->query($sql);
         $conn->cerrar();
         return $resultado;
-}
+    }
 }
