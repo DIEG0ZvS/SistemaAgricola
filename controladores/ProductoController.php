@@ -7,7 +7,7 @@ class ProductoController{
         $producto = new Producto();
         $resultado = $producto->guardar(
             $datos["nombre"], 
-            $datos["descripcion"], 
+            $datos["categoria"], 
             $datos["precio"]
         );
         if($resultado!=0){
@@ -41,7 +41,7 @@ class ProductoController{
         $producto = new Producto();
         $resultado = $producto->actualizar(
             $datos["nombre"],
-            $datos["descripcion"],
+            $datos["categoria"],
             $datos["precio"],
             $datos["id"]
         );

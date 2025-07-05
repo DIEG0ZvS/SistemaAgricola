@@ -6,9 +6,9 @@ class PedidoController{
     public function guardar(array $datos){
         $pedido = new Pedido();
         $resultado = $pedido->guardar(
-            $datos["cliente"], 
-            $datos["producto"], 
-            $datos["cantidad"]
+            $datos["clienteId"], 
+            $datos["fecha"], 
+            $datos["estado"]
         );
         if($resultado!=0){
             return "Pedido guardado correctamente";
@@ -40,9 +40,9 @@ class PedidoController{
     public function actualizar(array $datos){
         $pedido = new Pedido();
         $resultado = $pedido->actualizar(
-            $datos["cliente"],
-            $datos["producto"],
-            $datos["cantidad"],
+            $datos["clienteId"],
+            $datos["fecha"],
+            $datos["estado"],
             $datos["id"]
         );
         if($resultado!=0){
