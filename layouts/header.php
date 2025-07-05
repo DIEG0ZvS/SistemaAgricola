@@ -3,7 +3,8 @@ $archivoActual = basename($_SERVER['PHP_SELF']);
 $ocultarSidebar = (
     $archivoActual === 'actualizarProducto.php' ||
     $archivoActual === 'actualizarPedido.php' ||
-    $archivoActual === 'actualizarUsuario.php'
+    $archivoActual === 'actualizarUsuario.php' ||
+    $archivoActual === 'actualizarDistribucion.php'
 );
 ?>
 <style>
@@ -40,6 +41,8 @@ $ocultarSidebar = (
         class="btn btn-success" onclick="location.href='verProductos.php'">Ver Productos</button>
     <button id="btnPedidos" onclick="mostrarBoton('btnPedidos')"
         class="btn btn-warning" onclick="location.href='verPedidos.php'">Ver Pedidos</button>
+    <button id="btnDistribuciones" onclick="mostrarBoton('btnDistribuciones')"
+        class="btn btn-secondary" onclick="location.href='verDistribuciones.php'">Ver Distribuciones</button>
 </div>
 
 <script>
@@ -48,12 +51,14 @@ function mostrarBoton(id) {
     document.getElementById('btnUsuarios').style.display = 'block';
     document.getElementById('btnProductos').style.display = 'block';
     document.getElementById('btnPedidos').style.display = 'block';
+    document.getElementById('btnDistribuciones').style.display = 'block';
     // Ocultar el botón clickeado
     document.getElementById(id).style.display = 'none';
     // Redirigir según el botón
     if(id === 'btnUsuarios') window.location.href = 'verUsuarios.php';
     if(id === 'btnProductos') window.location.href = 'verProducto.php';
     if(id === 'btnPedidos') window.location.href = 'verPedido.php';
+    if(id === 'btnDistribuciones') window.location.href = 'verDistribucion.php'
 }
 </script>
 <!DOCTYPE html>

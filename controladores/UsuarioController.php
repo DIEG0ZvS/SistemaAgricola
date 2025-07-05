@@ -2,79 +2,85 @@
 
 require_once "modelos/Usuario.php";
 
-class UsuarioController{
-    public function guardar(array $datos){
+class UsuarioController {
+
+    public function guardar(array $datos) {
         $usuario = new Usuario();
         $resultado = $usuario->guardar(
             $datos["nombre"], 
             $datos["correo"], 
             password_hash($datos["clave"], PASSWORD_DEFAULT)
         );
-        if($resultado!=0){
-            return "Usuario guardado correctamente";
-        }else{
-            return "Error al guardar el usuario";
-        }
+        return $resultado != 0 ? "Usuario guardado correctamente" : "Error al guardar el usuario";
     }
 
-    public function buscar($id){
+    
+    public function buscar($id) {
         $usuario = new Usuario();
         return $usuario->buscar($id);
     }
 
-    public function mostrar(){
+    public function mostrar() {
         $usuario = new Usuario();
         return $usuario->mostrar();
     }
 
-    public function eliminar($id){
+    public function eliminar($id) {
         $usuario = new Usuario();
         $resultado = $usuario->eliminar($id);
-        if($resultado!=0){
-            return "location: verUsuarios.php";
-        }else{
-            return "Error: no se eliminó el usuario";
+        if ($resultado != 0) {
+            header("Location: verUsuarios.php");
+            exit();
+        } else {
+            $_SESSION['login_error'] = "No se pudo eliminar el usuario.";
+            header("Location: verUsuarios.php");
+            exit();
         }
     }
 
-    public function actualizar(array $datos){
+    public function actualizar(array $datos) {
         $usuario = new Usuario();
         $resultado = $usuario->actualizar(
             $datos["nombre"],
             $datos["correo"],
             $datos["id"]
         );
-        if($resultado!= 0){
-            header("location: verClientes.php");
-        }else{
-            return "Error al actualizar el usuario";
+        if ($resultado != 0) {
+            header("Location: verClientes.php");
+            exit();
+        } else {
+            $_SESSION['login_error'] = "Error al actualizar el usuario.";
+            header("Location: verClientes.php");
+            exit();
         }
     }
 
-    public function login(String $correo, String $clave){
+    public function login(String $correo, String $clave) {
         $usuario = new Usuario();
         $resultado = $usuario->buscarPorCorreo($correo);
-        $claveDb = "";
-        $nombre = "";
-        $id = "";
-        $contador = 0;
-        foreach($resultado as $userLogin){
-            $claveDb = $userLogin["clave"];
-            $nombre = $userLogin["nombre"];
-            $id = $userLogin["id"];
-            $contador++;
-        }
-        if($contador!=0){
-            if(password_verify($clave, $claveDb)){
-                session_start();
-                $_SESSION["nombre"] = $nombre;
-                $_SESSION["id"] = $id;
-                header("location: verUsuarios.php");
-            }else{
-                return "Error: contraseña incorrecta";
+
+        if (!empty($resultado)) {
+            foreach ($resultado as $userLogin) {
+                // Comparación directa para contraseñas en texto plano
+                if ($clave === $userLogin["clave"]) {
+                    session_start();
+                    $_SESSION["nombre"] = $userLogin["nombre"];
+                    $_SESSION["id"] = $userLogin["id"];
+                    unset($_SESSION['login_error']);
+                    header("Location: verUsuarios.php");
+                    exit();
+                }
             }
-        }else{
-            return "Error al iniciar sesión";
+            session_start();
+            $_SESSION['login_error'] = "Contraseña incorrecta.";
+            header("Location: login.php");
+            exit();
+        } else {
+            session_start();
+            $_SESSION['login_error'] = "Usuario no encontrado.";
+            header("Location: login.php");
+            exit();
         }
     }
+    
 }
