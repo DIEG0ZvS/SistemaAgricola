@@ -1,9 +1,18 @@
 <?php
-    require_once "layouts/header.php";
-    require_once "controladores/ClienteController.php";
-    $cc = new ClienteController();
-    $clientes = $cc->mostrar();
+require_once "controladores/PedidoController.php";
+require_once "controladores/ClienteController.php";
 
+if (!empty($_POST)) {
+    $pc = new PedidoController();
+    $pc->guardar($_POST);
+    header("Location: verPedido.php");
+    exit();
+}
+
+$cc = new ClienteController();
+$clientes = $cc->mostrar();
+$ocultarSidebar = true;
+require_once "layouts/header.php";
 ?>
 
 <div class="container mt-5">
@@ -14,28 +23,32 @@
         <div class="card-body">
             <form method="post" action="">
                 <div class="mb-3">
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <label>Cliente:</label>
-    <select class="form-control" name="clienteId" required>
-        <option value="">Seleccione un cliente</option>
-        <?php foreach ($clientes as $cliente): ?>
-            <option value="<?= $cliente["id"]; ?>"><?= $cliente["id"]; ?> - <?= $cliente["nombre"]; ?></option>
-        <?php endforeach; ?>
-    </select><br>
+                    <label>Cliente:</label>
+                    <select class="form-control" name="clienteId" required>
+                        <option value="">Seleccione un cliente</option>
+                        <?php foreach ($clientes as $cliente): ?>
+                            <option value="<?= $cliente["id"]; ?>"><?= $cliente["id"]; ?> - <?= $cliente["nombre"]; ?></option>
+                        <?php endforeach; ?>
+                    </select><br>
 
-    <label>Fecha:</label>
-    <input class="form-control" type="date" name="fecha" required><br>
+                    <label>Fecha:</label>
+                    <input class="form-control" type="date" name="fecha" required><br>
 
-    <label>Estado:</label>
-    <select class="form-control" name="estado" required>
-        <option value="Pendiente">Pendiente</option>
-        <option value="En camino">En camino</option>
-        <option value="Entregado">Entregado</option>
-    </select><br>
+                    <label>Estado:</label>
+                    <select class="form-control" name="estado" required>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="En camino">En camino</option>
+                        <option value="Entregado">Entregado</option>
+                    </select><br>
 
-    <button type="submit" class="btn btn-success">Guardar</button>
-    <a href="verPedido.php" class="btn btn-secondary">Cancelar</a>
-</form>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <a href="verPedido.php" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 <?php
     require_once "controladores/PedidoController.php";
