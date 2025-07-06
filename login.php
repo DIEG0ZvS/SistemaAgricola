@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <h1>Ingresar al Sistema</h1>
 <form method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
-    <input type="email" name="correo" placeholder="Correo"/><br>
+    <input type="email" name="correo" placeholder="Correo Electronico"/><br>
     <input type="password" name="clave" placeholder="Contraseña"/><br>
     <input type="submit" value="Iniciar Sesión"/>
 </form>
