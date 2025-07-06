@@ -7,7 +7,7 @@ $inventario = $ic->mostrar();
 ?>
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="mb-0">Pedidos del Sistema</h2>
+        <h2 class="mb-0">Inventario del Sistema</h2>
         <a class="btn btn-danger" href="logout.php">Cerrar Sesión</a>
     </div>
 
