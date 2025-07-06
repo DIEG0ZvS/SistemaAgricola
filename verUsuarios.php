@@ -46,7 +46,7 @@
     </tbody>
 </table>
 <div class="text-end">
-        <a href="registrarUsuarios.php" class="btn btn-primary">
+        <a href="registrarUsuario.php" class="btn btn-primary">
             <i class="bi bi-plus-circle"></i> Registrar Cliente</a>
 <?php
 require_once "layouts/footer.php";
